@@ -66,7 +66,13 @@ public class Estadisticas {
      * @param code el cogido de evento capturado
      */
     public static void capturarEventoTeclado(KeyCode code) {
-
+        if (contadorEventosTeclado.containsKey(code)) {
+            Integer aux = contadorEventosTeclado.get(code);
+            contadorEventosTeclado.put(code, new Integer(aux.intValue() + 1));
+        }
+        else {
+            contadorEventosTeclado.put(code, new Integer(1));
+        }
     }
 
     /**
@@ -166,6 +172,10 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarRatioPrecision(){
+
+    }
+
+    public static void main(String[] args) {
 
     }
 }
