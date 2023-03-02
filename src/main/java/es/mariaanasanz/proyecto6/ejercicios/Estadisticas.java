@@ -91,7 +91,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Se debera mostrar por consola toda la informacion del LinkedHashMap contadorEventosTeclado con el siguiente formato (el orden SI importa) (8 puntos)
+     * DONE: Se debera mostrar por consola toda la informacion del LinkedHashMap contadorEventosTeclado con el siguiente formato (el orden SI importa) (8 puntos)
      * Teclas pulsadas durante la partida:
      *      - RIGHT: 55 veces
      *      - LEFT: 43 veces
@@ -103,7 +103,38 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarEventosTeclado(){
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("Teclas pulsadas durante la partida:\n");
+        int right = 0;
+        int left = 0;
+        int shift = 0;
+        int escape = 0;
+        int otros = 0;
+        for (Map.Entry<KeyCode, Integer> entrada : contadorEventosTeclado.entrySet()) {
+            switch (entrada.getKey()) {
+                case RIGHT:
+                    right = entrada.getValue().intValue();
+                    break;
+                case LEFT:
+                    left = entrada.getValue().intValue();
+                    break;
+                case SHIFT:
+                    shift = entrada.getValue().intValue();
+                    break;
+                case ESCAPE:
+                    escape = entrada.getValue().intValue();
+                    break;
+                case ASTERISK:
+                    otros += entrada.getValue().intValue();
+                    break;
+            }
+        }
+        sb.append("\t- RIGHT:").append(right).append(" veces\n");
+        sb.append("\t- LEFT:").append(left).append(" veces\n");
+        sb.append("\t- SHIFT:").append(shift).append(" veces\n");
+        sb.append("\t- ESCAPE:").append(escape).append(" veces\n");
+        sb.append("\t- OTROS:").append(otros).append(" veces\n");
+        System.out.println(sb.toString());
     }
 
     /**
