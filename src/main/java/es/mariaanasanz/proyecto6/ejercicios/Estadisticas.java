@@ -2,9 +2,7 @@ package es.mariaanasanz.proyecto6.ejercicios;
 
 import javafx.scene.input.KeyCode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 public class Estadisticas {
 
@@ -66,13 +64,30 @@ public class Estadisticas {
      * @param code el cogido de evento capturado
      */
     public static void capturarEventoTeclado(KeyCode code) {
-        if (contadorEventosTeclado.containsKey(code)) {
-            Integer aux = contadorEventosTeclado.get(code);
-            contadorEventosTeclado.put(code, new Integer(aux.intValue() + 1));
+        switch (code) {
+            case RIGHT:
+            case LEFT:
+            case SHIFT:
+            case ESCAPE:
+                if (contadorEventosTeclado.containsKey(code)) {
+                    Integer aux = contadorEventosTeclado.get(code);
+                    contadorEventosTeclado.put(code, new Integer(aux.intValue() + 1));
+                }
+                else {
+                    contadorEventosTeclado.put(code, new Integer(1));
+                }
+                break;
+            default:
+                if (contadorEventosTeclado.containsKey(KeyCode.ASTERISK)) {
+                    Integer aux = contadorEventosTeclado.get(KeyCode.ASTERISK);
+                    contadorEventosTeclado.put(KeyCode.ASTERISK, new Integer(aux.intValue() + 1));
+                }
+                else {
+                    contadorEventosTeclado.put(KeyCode.ASTERISK, new Integer(1));
+                }
+                break;
         }
-        else {
-            contadorEventosTeclado.put(code, new Integer(1));
-        }
+
     }
 
     /**
