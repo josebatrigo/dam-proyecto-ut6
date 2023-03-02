@@ -169,7 +169,7 @@ public class Estadisticas {
             objetoMap.put(objeto, new Integer(1));
             contadorObjetosRecogidos.put(actor, objetoMap);
         }
-        else if (!contadorObjetosRecogidos.containsKey(objeto)) {
+        else if (!contadorObjetosRecogidos.get(actor).containsKey(objeto)) {
             contadorObjetosRecogidos.get(actor).put(objeto, new Integer(1));
         }
         else {
@@ -192,7 +192,16 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarObjetosRecogidos(){
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("Objetos recogidos durante la partida:\n");
+        for (Map.Entry<String, HashMap<String, Integer>> actorEntrada : contadorObjetosRecogidos.entrySet()) {
+            sb.append("\t- ").append(actorEntrada.getKey()).append(":\n");
+            for (Map.Entry<String, Integer> objetoEntrada : actorEntrada.getValue().entrySet()) {
+                sb.append("\t\t- ").append(objetoEntrada.getKey()).append(": ");
+                sb.append(objetoEntrada.getValue().intValue()).append(" veces\n");
+            }
+        }
+        System.out.println(sb.toString());
     }
 
     /**
@@ -241,6 +250,35 @@ public class Estadisticas {
     }
 
     public static void main(String[] args) {
+        HashMap<String, HashMap<String, Integer>> map = new HashMap<>();
+        HashMap<String,Integer> a1 = new HashMap<>();
+        HashMap<String,Integer> a2 = new HashMap<>();
+        /*
+        a1.put("comida", 7);
+        a1.put("gemas", 3);
+        a2.put("comida", 2);
+        a2.put("gemas", 5);
+        map.put("JUGADOR", a1);
+        map.put("ZARIGUEYA", a2);
+        */
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "comida");
+        objetoRecogido("ZARIGUEYA", "gemas");
+        objetoRecogido("ZARIGUEYA", "gemas");
+        objetoRecogido("ZARIGUEYA", "gemas");
+        objetoRecogido("JUGADOR", "comida");
+        objetoRecogido("JUGADOR", "comida");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
 
+        mostrarObjetosRecogidos();
     }
 }
