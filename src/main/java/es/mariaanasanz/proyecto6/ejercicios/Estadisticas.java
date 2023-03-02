@@ -138,7 +138,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: debera devolver el evento con mas ocurrencias del LinkedHashMap contadorEventosTeclado (6 puntos)
+     * DONE: debera devolver el evento con mas ocurrencias del LinkedHashMap contadorEventosTeclado (6 puntos)
      * IMPORTANTE: Se debera emplear el metodo keySet() para recorrer las entradas
      * IMPORTANTE: Si el juego se cierra sin pulsar ninguna tecla, devera devolver KeyCode.ESCAPE
      * @return KeyCode mas frecuente
@@ -164,7 +164,18 @@ public class Estadisticas {
      * @param objeto sera o la comida o la gema
      */
     public static void objetoRecogido(String actor, String objeto){
-
+        if (!contadorObjetosRecogidos.containsKey(actor)) {
+            HashMap<String, Integer> objetoMap = new HashMap<>();
+            objetoMap.put(objeto, new Integer(1));
+            contadorObjetosRecogidos.put(actor, objetoMap);
+        }
+        else if (!contadorObjetosRecogidos.containsKey(objeto)) {
+            contadorObjetosRecogidos.get(actor).put(objeto, new Integer(1));
+        }
+        else {
+            Integer aux = contadorObjetosRecogidos.get(actor).get(objeto);
+            contadorObjetosRecogidos.get(actor).put(objeto, new Integer (aux.intValue() + 1));
+        }
     }
 
     /**
