@@ -144,7 +144,7 @@ public class Estadisticas {
      * @return KeyCode mas frecuente
      */
     public static KeyCode teclaMasPulsada(){
-        int max = 0;
+        int max = Integer.MIN_VALUE;
         KeyCode maxKey = KeyCode.ASTERISK;
         for (KeyCode key : contadorEventosTeclado.keySet()) {
             if (contadorEventosTeclado.get(key).intValue() > max) {
@@ -212,7 +212,36 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarQuienHaRecogidoMasObjetos(){
-
+        int maxObjetos = 0;
+        int maxJugador = 0;
+        int maxZarigueya = 0;
+        String maxActor = "";
+        for (HashMap<String, Integer> actor : contadorObjetosRecogidos.values()) {
+            for (String s : actor.keySet()) {
+                if (s.equals("JUGADOR")) {
+                    for (Integer value : actor.values()) {
+                        if (s.equals("JUGADOR")) {
+                            maxJugador += value.intValue();
+                        }
+                        else if (s.equals("ZARIGUEYA")) {
+                            maxZarigueya += value.intValue();
+                        }
+                    }
+                }
+            }
+        }
+        if (maxJugador > maxZarigueya) {
+            maxObjetos = maxZarigueya;
+            maxActor = "ZARIGUEYA";
+        }
+        else {
+            maxObjetos = maxJugador;
+            maxActor = "JUGADOR";
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("Quien ha recogido mas objetos ha sido... ¡").append(maxActor).append(" con un total de ");
+        sb.append(maxObjetos).append(" objetos!");
+        System.out.println(sb.toString());
     }
 
     /**
@@ -278,7 +307,16 @@ public class Estadisticas {
         objetoRecogido("JUGADOR", "gemas");
         objetoRecogido("JUGADOR", "gemas");
         objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
+        objetoRecogido("JUGADOR", "gemas");
 
         mostrarObjetosRecogidos();
+        mostrarQuienHaRecogidoMasObjetos();
     }
 }
