@@ -8,9 +8,9 @@ import java.util.LinkedHashMap;
 
 public class Estadisticas {
 
-    private static LinkedHashMap<KeyCode, Integer> contadorEventosTeclado;
-    private static HashMap<String, HashMap<String, Integer>> contadorObjetosRecogidos;
-    private static ArrayList<Boolean> historicoDisparos;
+    private static LinkedHashMap<KeyCode, Integer> contadorEventosTeclado = new LinkedHashMap<KeyCode, Integer>();
+    private static HashMap<String, HashMap<String, Integer>> contadorObjetosRecogidos = new HashMap<String, HashMap<String, Integer>>();
+    private static ArrayList<Boolean> historicoDisparos = new ArrayList<Boolean>();
 
     public static void mostrarEstadisticasSeguro(){
         try {
