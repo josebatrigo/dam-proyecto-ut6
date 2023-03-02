@@ -144,7 +144,15 @@ public class Estadisticas {
      * @return KeyCode mas frecuente
      */
     public static KeyCode teclaMasPulsada(){
-        return null;
+        int max = 0;
+        KeyCode maxKey = KeyCode.ASTERISK;
+        for (KeyCode key : contadorEventosTeclado.keySet()) {
+            if (contadorEventosTeclado.get(key).intValue() > max) {
+                max = contadorEventosTeclado.get(key).intValue();
+                maxKey = key;
+            }
+        }
+        return maxKey;
     }
 
     /**
