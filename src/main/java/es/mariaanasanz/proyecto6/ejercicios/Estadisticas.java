@@ -249,7 +249,7 @@ public class Estadisticas {
      * @param exito representa si el disparo es certero (true) o fallido (false)
      */
     public static void capturarDisparo(boolean exito){
-
+        historicoDisparos.add(Boolean.valueOf(exito));
     }
 
     /**
