@@ -71,19 +71,19 @@ public class Estadisticas {
             case ESCAPE:
                 if (contadorEventosTeclado.containsKey(code)) {
                     Integer aux = contadorEventosTeclado.get(code);
-                    contadorEventosTeclado.put(code, new Integer(aux.intValue() + 1));
+                    contadorEventosTeclado.put(code, Integer.valueOf(aux.intValue() + 1));
                 }
                 else {
-                    contadorEventosTeclado.put(code, new Integer(1));
+                    contadorEventosTeclado.put(code, Integer.valueOf(1));
                 }
                 break;
             default:
                 if (contadorEventosTeclado.containsKey(KeyCode.ASTERISK)) {
                     Integer aux = contadorEventosTeclado.get(KeyCode.ASTERISK);
-                    contadorEventosTeclado.put(KeyCode.ASTERISK, new Integer(aux.intValue() + 1));
+                    contadorEventosTeclado.put(KeyCode.ASTERISK, Integer.valueOf(aux.intValue() + 1));
                 }
                 else {
-                    contadorEventosTeclado.put(KeyCode.ASTERISK, new Integer(1));
+                    contadorEventosTeclado.put(KeyCode.ASTERISK, Integer.valueOf(1));
                 }
                 break;
         }
@@ -166,15 +166,15 @@ public class Estadisticas {
     public static void objetoRecogido(String actor, String objeto){
         if (!contadorObjetosRecogidos.containsKey(actor)) {
             HashMap<String, Integer> objetoMap = new HashMap<>();
-            objetoMap.put(objeto, new Integer(1));
+            objetoMap.put(objeto, Integer.valueOf(1));
             contadorObjetosRecogidos.put(actor, objetoMap);
         }
         else if (!contadorObjetosRecogidos.get(actor).containsKey(objeto)) {
-            contadorObjetosRecogidos.get(actor).put(objeto, new Integer(1));
+            contadorObjetosRecogidos.get(actor).put(objeto, Integer.valueOf(1));
         }
         else {
             Integer aux = contadorObjetosRecogidos.get(actor).get(objeto);
-            contadorObjetosRecogidos.get(actor).put(objeto, new Integer (aux.intValue() + 1));
+            contadorObjetosRecogidos.get(actor).put(objeto, Integer.valueOf (aux.intValue() + 1));
         }
     }
 
