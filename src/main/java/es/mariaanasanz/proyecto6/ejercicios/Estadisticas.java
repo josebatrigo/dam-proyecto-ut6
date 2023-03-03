@@ -222,7 +222,7 @@ public class Estadisticas {
                     maxJugador += value.intValue();
                 }
             }
-            else {
+            else if (entrada.getKey().equals("ZARIGUEYA")){
                 for (Integer value : entrada.getValue().values()) {
                     maxZarigueya += value.intValue();
                 }
