@@ -78,6 +78,11 @@ public class Simulador {
         for (int i = 0; i < numDisparosFallidosBorrar; i++) {
             Estadisticas.borrarDisparo(false);
         }
+        Estadisticas.mostrarEventosTeclado();
+        Estadisticas.teclaMasPulsada();
+        Estadisticas.mostrarObjetosRecogidos();
+        Estadisticas.mostrarQuienHaRecogidoMasObjetos();
+        Estadisticas.mostrarRatioPrecision();
     }
 
 }
