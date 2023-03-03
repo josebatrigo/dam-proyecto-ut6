@@ -48,7 +48,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Captura todos los eventos que se produzcan durante la partida en el LinkedHashMap contadorEventosTeclado (10 puntos)
+     * DONE: Captura todos los eventos que se produzcan durante la partida en el LinkedHashMap contadorEventosTeclado (10 puntos)
      * Acabaremos poblando un HashMap que contenga la cantidad de veces que ha ocurrido cada evento de teclado
      * Los eventos posibles que pueden llegar son:
      *      - KeyCode.RIGHT  --> para desplazarse a la derecha
@@ -156,7 +156,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: se debera almacenar la relacion de objetos que recoge cada actor en el HashMap contadorObjetosRecogidos (12 puntos)
+     * DONE: se debera almacenar la relacion de objetos que recoge cada actor en el HashMap contadorObjetosRecogidos (12 puntos)
      * IMPORTANTE: la primera clave del HashMap contadorObjetosRecogidos sera el actor
      * IMPORTANTE: para cada actor habra otro hashmap asociado con la relacion de objetos y las veces que estos se han recogido
      * IMPORTANTE: Se debera evitar el autoboxing y el unboxing
@@ -179,7 +179,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Se debera mostrar por consola toda la informacion del HashMap contadorObjetosRecogidos con el siguiente formato (el orden no importa) (16 puntos)
+     * DONE: Se debera mostrar por consola toda la informacion del HashMap contadorObjetosRecogidos con el siguiente formato (el orden no importa) (16 puntos)
      * Objetos recogidos durante la partida:
      *      - JUGADOR:
      *          - comida: 7 veces
@@ -205,7 +205,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Se debera mostrar por consola quien ha recogido mas objetos en base al HashMap contadorObjetosRecogidos con el siguiente formato (14 puntos)
+     * DONE: Se debera mostrar por consola quien ha recogido mas objetos en base al HashMap contadorObjetosRecogidos con el siguiente formato (14 puntos)
      * Quien ha recogido mas objetos ha sido... ¡[JUGADOR/ZARIGUEYA] con un total de [XX] objetos!
      * IMPORTANTE: Se debera emplear el metodo values() para sumar la cantidad de objetos
      * IMPORTANTE: Se debera evitar el autoboxing y el unboxing
@@ -216,27 +216,25 @@ public class Estadisticas {
         int maxJugador = 0;
         int maxZarigueya = 0;
         String maxActor = "";
-        for (HashMap<String, Integer> actor : contadorObjetosRecogidos.values()) {
-            for (String s : actor.keySet()) {
-                if (s.equals("JUGADOR")) {
-                    for (Integer value : actor.values()) {
-                        if (s.equals("JUGADOR")) {
-                            maxJugador += value.intValue();
-                        }
-                        else if (s.equals("ZARIGUEYA")) {
-                            maxZarigueya += value.intValue();
-                        }
-                    }
+        for (Map.Entry<String, HashMap<String, Integer>> entrada : contadorObjetosRecogidos.entrySet()) {
+            if (entrada.getKey().equals("JUGADOR")) {
+                for (Integer value : entrada.getValue().values()) {
+                    maxJugador += value.intValue();
+                }
+            }
+            else {
+                for (Integer value : entrada.getValue().values()) {
+                    maxZarigueya += value.intValue();
                 }
             }
         }
         if (maxJugador > maxZarigueya) {
-            maxObjetos = maxZarigueya;
-            maxActor = "ZARIGUEYA";
-        }
-        else {
             maxObjetos = maxJugador;
             maxActor = "JUGADOR";
+        }
+        else {
+            maxObjetos = maxZarigueya;
+            maxActor = "ZARIGUEYA";
         }
         StringBuilder sb = new StringBuilder();
         sb.append("Quien ha recogido mas objetos ha sido... ¡").append(maxActor).append(" con un total de ");
