@@ -25,6 +25,59 @@ public class Simulador {
      */
     public static void main(String[] args) {
 
+        int numFlechasIzquierdas = Integer.parseInt(args[0]);
+        int numFlechasDerecha = Integer.parseInt(args[1]);
+        int numShift = Integer.parseInt(args[2]);
+        int numEscape = Integer.parseInt(args[3]);
+        int numOtrasTeclas = Integer.parseInt(args[4]);
+        int numComidaJugador = Integer.parseInt(args[5]);
+        int numJoyaJugador = Integer.parseInt(args[6]);
+        int numComidaZarigueya = Integer.parseInt(args[7]);
+        int numJoyaZarigueya = Integer.parseInt(args[8]);
+        int numDisparosCerteros = Integer.parseInt(args[9]);
+        int numDisparosFallidos = Integer.parseInt(args[10]);
+        int numDisparosCerterosBorrar = Integer.parseInt(args[11]);
+        int numDisparosFallidosBorrar = Integer.parseInt(args[12]);
+
+        for (int i = 0; i < numFlechasIzquierdas; i++) {
+            Estadisticas.capturarEventoTeclado(KeyCode.RIGHT);
+        }
+        for (int i = 0; i < numFlechasDerecha; i++) {
+            Estadisticas.capturarEventoTeclado(KeyCode.LEFT);
+        }
+        for (int i = 0; i < numShift; i++) {
+            Estadisticas.capturarEventoTeclado(KeyCode.SHIFT);
+        }
+        for (int i = 0; i < numEscape; i++) {
+            Estadisticas.capturarEventoTeclado(KeyCode.ESCAPE);
+        }
+        for (int i = 0; i < numOtrasTeclas; i++) {
+            Estadisticas.capturarEventoTeclado(KeyCode.ASTERISK);
+        }
+        for (int i = 0; i < numComidaJugador; i++) {
+            Estadisticas.objetoRecogido("JUGADOR", "comida");
+        }
+        for (int i = 0; i < numJoyaJugador; i++) {
+            Estadisticas.objetoRecogido("JUGADOR", "gemas");
+        }
+        for (int i = 0; i < numComidaZarigueya; i++) {
+            Estadisticas.objetoRecogido("ZARIGUEYA", "comida");
+        }
+        for (int i = 0; i < numJoyaZarigueya; i++) {
+            Estadisticas.objetoRecogido("ZARIGUEYA", "gemas");
+        }
+        for (int i = 0; i < numDisparosCerteros; i++) {
+            Estadisticas.capturarDisparo(true);
+        }
+        for (int i = 0; i < numDisparosFallidos; i++) {
+            Estadisticas.capturarDisparo(false);
+        }
+        for (int i = 0; i < numDisparosCerterosBorrar; i++) {
+            Estadisticas.borrarDisparo(true);
+        }
+        for (int i = 0; i < numDisparosFallidosBorrar; i++) {
+            Estadisticas.borrarDisparo(false);
+        }
     }
 
 }

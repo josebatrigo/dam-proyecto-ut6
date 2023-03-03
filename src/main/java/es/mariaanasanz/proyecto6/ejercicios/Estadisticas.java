@@ -243,7 +243,7 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Se debera incluir al ArrayList historicoDisparos los disparos que se efectuen durante el juego (el orden SI importa) (6 puntos)
+     * DONE: Se debera incluir al ArrayList historicoDisparos los disparos que se efectuen durante el juego (el orden SI importa) (6 puntos)
      * AVISO: Cuando es certero, se invoca dos veces este metodo, no os preocupeis. Para eso luego teneis que implementar borrarDisparo
      * IMPORTANTE: Se debera evitar el autoboxing y el unboxing
      * @param exito representa si el disparo es certero (true) o fallido (false)
@@ -253,17 +253,17 @@ public class Estadisticas {
     }
 
     /**
-     * TODO: Se debera eliminar el ULTIMO disparo QUE SE INDIQUE del ArrayList historicoDisparos (no vale eliminar cualquiera) (6 puntos)
+     * DONE: Se debera eliminar el ULTIMO disparo QUE SE INDIQUE del ArrayList historicoDisparos (no vale eliminar cualquiera) (6 puntos)
      * AVISO: Es muy importante implementar correctamente este metodo para que el metodo mostrarRatioPrecision funcione correctamente
      * IMPORTANTE: Se debera evitar el autoboxing y el unboxing
      * @param exito representa si el disparo es certero (true) o fallido (false)
      */
     public static void borrarDisparo(boolean exito){
-        historicoDisparos.remove(historicoDisparos.size() - 1);
+        historicoDisparos.remove(historicoDisparos.lastIndexOf(exito));
     }
 
     /**
-     * TODO: Se debera mostrar por consola el porcentaje de precision en base al contenido del ArrayList historicoDisparos con el siguiente formato: (8 puntos)
+     * DONE: Se debera mostrar por consola el porcentaje de precision en base al contenido del ArrayList historicoDisparos con el siguiente formato: (8 puntos)
      * Tienes una precision del [XX]%.
      * Adicionalmente, en base a la precision, se mostrara un mensaje adicional:
      *      Si la precion es entre un 67 y un 100% --> ¡Eres insuperable!
@@ -291,46 +291,5 @@ public class Estadisticas {
             sb.append("Deberias entrenar un poco mas...");
         }
         System.out.println(sb.toString());
-    }
-
-    public static void main(String[] args) {
-        HashMap<String, HashMap<String, Integer>> map = new HashMap<>();
-        HashMap<String,Integer> a1 = new HashMap<>();
-        HashMap<String,Integer> a2 = new HashMap<>();
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "comida");
-        objetoRecogido("ZARIGUEYA", "gemas");
-        objetoRecogido("ZARIGUEYA", "gemas");
-        objetoRecogido("ZARIGUEYA", "gemas");
-        objetoRecogido("JUGADOR", "comida");
-        objetoRecogido("JUGADOR", "comida");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        objetoRecogido("JUGADOR", "gemas");
-        mostrarObjetosRecogidos();
-        mostrarQuienHaRecogidoMasObjetos();
-        capturarDisparo(true);
-        capturarDisparo(true);
-        capturarDisparo(false);
-        capturarDisparo(false);
-        capturarDisparo(false);
-        System.out.println(historicoDisparos);
-        System.out.println(historicoDisparos.size());
-        mostrarRatioPrecision();
     }
 }
