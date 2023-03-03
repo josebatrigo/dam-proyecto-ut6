@@ -273,21 +273,30 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarRatioPrecision(){
-
+        StringBuilder sb = new StringBuilder();
+        int aciertos = 0;
+        for (Boolean disparo : historicoDisparos) {
+            if (disparo.booleanValue()) {
+                aciertos++;
+            }
+        }
+        sb.append("Tienes una precision del ").append((int)((float) aciertos / historicoDisparos.size() * 100)).append("%\n");
+        if ((int)((float) aciertos / historicoDisparos.size() * 100) >= 67) {
+            sb.append("¡Eres insuperable!");
+        }
+        else if ((int)((float) aciertos / historicoDisparos.size() * 100) >= 34) {
+            sb.append("No esta nada mal");
+        }
+        else {
+            sb.append("Deberias entrenar un poco mas...");
+        }
+        System.out.println(sb.toString());
     }
 
     public static void main(String[] args) {
         HashMap<String, HashMap<String, Integer>> map = new HashMap<>();
         HashMap<String,Integer> a1 = new HashMap<>();
         HashMap<String,Integer> a2 = new HashMap<>();
-        /*
-        a1.put("comida", 7);
-        a1.put("gemas", 3);
-        a2.put("comida", 2);
-        a2.put("gemas", 5);
-        map.put("JUGADOR", a1);
-        map.put("ZARIGUEYA", a2);
-        */
         objetoRecogido("ZARIGUEYA", "comida");
         objetoRecogido("ZARIGUEYA", "comida");
         objetoRecogido("ZARIGUEYA", "comida");
@@ -313,8 +322,15 @@ public class Estadisticas {
         objetoRecogido("JUGADOR", "gemas");
         objetoRecogido("JUGADOR", "gemas");
         objetoRecogido("JUGADOR", "gemas");
-
         mostrarObjetosRecogidos();
         mostrarQuienHaRecogidoMasObjetos();
+        capturarDisparo(true);
+        capturarDisparo(true);
+        capturarDisparo(false);
+        capturarDisparo(false);
+        capturarDisparo(false);
+        System.out.println(historicoDisparos);
+        System.out.println(historicoDisparos.size());
+        mostrarRatioPrecision();
     }
 }
