@@ -212,29 +212,17 @@ public class Estadisticas {
      * IMPORTANTE: Se debera emplear StringBuilder para construir la cadena a mostrar
      */
     public static void mostrarQuienHaRecogidoMasObjetos(){
-        int maxObjetos = 0;
-        int maxJugador = 0;
-        int maxZarigueya = 0;
+        int maxObjetos = Integer.MIN_VALUE;
         String maxActor = "";
         for (Map.Entry<String, HashMap<String, Integer>> entrada : contadorObjetosRecogidos.entrySet()) {
-            if (entrada.getKey().equals("JUGADOR")) {
-                for (Integer value : entrada.getValue().values()) {
-                    maxJugador += value.intValue();
-                }
+            int numObjetos = 0;
+            for (Integer value : entrada.getValue().values()) {
+                numObjetos += value;
             }
-            else if (entrada.getKey().equals("ZARIGUEYA")){
-                for (Integer value : entrada.getValue().values()) {
-                    maxZarigueya += value.intValue();
-                }
+            if (numObjetos > maxObjetos) {
+                maxObjetos = numObjetos;
+                maxActor = entrada.getKey();
             }
-        }
-        if (maxJugador > maxZarigueya) {
-            maxObjetos = maxJugador;
-            maxActor = "JUGADOR";
-        }
-        else {
-            maxObjetos = maxZarigueya;
-            maxActor = "ZARIGUEYA";
         }
         StringBuilder sb = new StringBuilder();
         sb.append("Quien ha recogido mas objetos ha sido... ¡").append(maxActor).append(" con un total de ");
